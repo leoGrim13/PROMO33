@@ -9,15 +9,12 @@ function Catalogue() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Récupérer les catégories
         const categoriesResponse = await axios.get('/categorie');
         const toutesLesCategories = [
           { id: '', nom: 'Tous les produits' },
           ...categoriesResponse.data
         ];
         setCategories(toutesLesCategories);
-
-        // Récupérer les produits en fonction de la catégorie sélectionnée
         let productsResponse;
         if (selectedCategory === '') {
           productsResponse = await axios.get('/prod');
@@ -25,10 +22,7 @@ function Catalogue() {
           productsResponse = await axios.get(`/prod/tri?categorie=${selectedCategory}`);
         }
 
-        // Mettre à jour les produits
         setProducts(productsResponse.data);
-        
-        // Fonction pour obtenir le prix avec promotion pour un produit
         const getPriceWithPromotion = async (produit) => {
           const response = await axios.get(`/promotion/getPrice/${produit.id}`);
           return response.data;
@@ -38,8 +32,6 @@ function Catalogue() {
           const prixAvecPromotion = await getPriceWithPromotion(produit);
           return { ...produit, prixAvecPromotion };
         }));
-        
-        // Mettre à jour les produits avec les prix promotionnés
         setProducts(updatedProducts);
       } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);

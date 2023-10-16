@@ -17,7 +17,7 @@ function CreateProduct() {
     prix: '',
     description: '',
     categorieId: 1,
-    image1: null, // Changement du nom de la clé
+    image1: null, 
   });
 
   const [categories, setCategories] = useState([]);
@@ -45,7 +45,7 @@ function CreateProduct() {
       formData.append('prix', parseFloat(product.prix).toFixed(2));
       formData.append('description', product.description);
       formData.append('categorie', product.categorie);
-      formData.append('image1', product.image1); // Changement du nom du champ
+      formData.append('image1', product.image1);
 
       await axios.post('/prod/addProduct', formData, {
         headers: {
@@ -60,7 +60,7 @@ function CreateProduct() {
         prix: '',
         description: '',
         categorieId: 1,
-        image1: null, // Changement du nom de la clé
+        image1: null, 
       });
     } catch (error) {
       console.error(error);
@@ -99,7 +99,7 @@ function CreateProduct() {
         <select
           id="categorie"
           name="categorie"
-          value={product.categorie || 11} // Utilisez une valeur par défaut (par exemple, 1) si product.categorie est indéfini
+          value={product.categorie || 11}
           onChange={handleChange}
         >
           {categories.map((categorie) => (

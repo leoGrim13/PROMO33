@@ -6,15 +6,10 @@ import com.example.test33.Request.PromotionRequest;
 import com.example.test33.Service.ProduitService;
 import com.example.test33.Service.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 
@@ -43,16 +38,11 @@ import java.util.Date;
             Promotion existingPromotion = promotionService.getPromotionByProduit(produit);
 
             if (existingPromotion != null) {
-                // Supprimez la promotion existante
                 promotionService.deletePromotion(existingPromotion.getId());
             }
-
-            // Récupérez le prix actuel du produit
             double prixOriginal = produit.getPrix();
 
-            // Ajoutez la nouvelle promotion
             Promotion newPromotion = promotionService.createPromotion(produitId, debutPromo, finPromo, pourcentage);
-
             return new ResponseEntity<>(newPromotion, HttpStatus.CREATED);
         }
 
@@ -65,14 +55,11 @@ import java.util.Date;
             Promotion promotion = promotionService.getPromotionByProduit(produit);
 
             if (promotion != null) {
-                // Calculer le prix avec réduction
                 double prixOriginal = produit.getPrix();
                 double pourcentage = promotion.getPourcentage().doubleValue();
                 double nouveauPrix = prixOriginal * (1 - pourcentage / 100.0);
                 return new ResponseEntity<>(nouveauPrix, HttpStatus.OK);
             }
-
-            // Pas de promotion en cours, renvoyer le prix d'origine
             return new ResponseEntity<>(produit.getPrix(), HttpStatus.OK);
         }
 
@@ -82,8 +69,6 @@ import java.util.Date;
                     .orElseThrow(() -> new IllegalArgumentException("Promotion non trouvée"));
 
             Produit produit = promotion.getProduit();
-
-            // Supprimez la promotion de la base de données
             promotionService.deletePromotion(id);
 
             return new ResponseEntity<>(HttpStatus.OK);

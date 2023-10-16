@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 function AddPromo() {
   // État local pour les valeurs du formulaire
-  const [produitId, setProduitId] = useState(''); // État pour l'ID du produit sélectionné
-  const [produits, setProduits] = useState([]); // État pour la liste des produits
-  const [pourcentage, setPourcentage] = useState(0); // État pour le pourcentage de réduction
-  const [debutPromo, setDebutPromo] = useState(''); // État pour la date de début de promotion
-  const [finPromo, setFinPromo] = useState(''); // État pour la date de fin de promotion
+  const [produitId, setProduitId] = useState('');
+  const [produits, setProduits] = useState([]); 
+  const [pourcentage, setPourcentage] = useState(0); n
+  const [debutPromo, setDebutPromo] = useState(''); 
+  const [finPromo, setFinPromo] = useState(''); 
 
   useEffect(() => {
-    // Effet secondaire pour récupérer la liste des produits depuis votre API
     fetch('/prod')
       .then((response) => response.json())
       .then((data) => {
-        // Mettre à jour l'état avec la liste des produits
         setProduits(data);
       })
       .catch((error) => {
@@ -22,7 +20,6 @@ function AddPromo() {
   }, []);
 
   const handleSubmit = () => {
-    // Validation des données du formulaire
     if (!produitId) {
       alert('Veuillez sélectionner un produit.');
       return;
@@ -41,21 +38,11 @@ function AddPromo() {
       return;
     }
 
-    // Préparation des données pour la requête POST
-    const Id = produitId; // Utilisez la variable correcte ici (était déjà correct)
+    const Id = produitId; 
     const pourcentageReduction = pourcentage;
     const dateDebut = debutPromo;
     const dateFin = finPromo;
 
-    // Affichage des données pour débogage
-    console.log('Données de la promotion :', {
-      produitId: Id,
-      debutPromo: dateDebut,
-      finPromo: dateFin,
-      pourcentage: pourcentageReduction,
-    });
-
-    // Envoi de la requête POST pour créer la promotion
     fetch('/promotion/create', {
       method: 'POST',
       headers: {
@@ -70,15 +57,13 @@ function AddPromo() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Gérer la réponse de création de promotion
         alert('Promotion créée avec succès');
-        setProduitId(''); // Réinitialisation des champs du formulaire
+        setProduitId(''); 
         setPourcentage(0);
         setDebutPromo('');
         setFinPromo('');
       })
       .catch((error) => {
-        // Gérer les erreurs de la requête
         alert('Erreur lors de la création de la promotion : ' + error.message);
       });
   };

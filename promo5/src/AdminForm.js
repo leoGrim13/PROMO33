@@ -24,15 +24,13 @@ function AdminForm() {
       });
   
       if (response.status === 200 && response.data === "BRAVO") {
-        // Authentification réussie, rediriger vers AdminManager
         navigate('/admin-manager');
       } else {
-        // Authentification échouée, afficher un message d'erreur
+
         alert('Authentification échouée');
       }
     } catch (error) {
       console.error(error);
-      // Gérer d'autres erreurs ici
     }
   };
   

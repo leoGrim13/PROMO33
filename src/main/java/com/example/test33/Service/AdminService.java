@@ -29,7 +29,6 @@ public class AdminService {
         return adminRepository.findByUsernameAndEmail(username, email);
     }
 
-
     public boolean authenticateAdmin(String username, String email, String password) {
 
         Admin admin = adminRepository.findByUsernameAndEmail(username, email);

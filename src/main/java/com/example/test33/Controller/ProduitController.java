@@ -42,14 +42,10 @@ public class ProduitController {
     }
     @GetMapping("/tri")
     public List<Produit> trierProduitsParCategorie(@RequestParam(name = "categorie") Long Id) {
-        // Obtenez l'instance de catégorie correspondante en fonction de l'ID
         Categorie categorie = categorieService.getCategorieById(Id);
-
         if (categorie == null) {
             return new ArrayList<>();
         }
-
-        // Utilisez le repository pour rechercher les produits par catégorie
         return produitRepository.findByCategorie(categorie);
     }
 
@@ -85,8 +81,6 @@ public class ProduitController {
             produit.setDescription(description);
             produit.setPrix(prix);
             produit.setImage(uniqueFileName);
-
-            // Obtenez l'instance de catégorie correspondante en fonction de l'ID
             Categorie categorie = categorieService.getCategorieById(Id);
             produit.setCategorie(categorie);
 
