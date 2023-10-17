@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './App.css';
 
 function Catalogue() {
   const [categories, setCategories] = useState([]);
@@ -42,12 +43,18 @@ function Catalogue() {
   }, [selectedCategory]);
 
   return (
+    
+    
+    
     <div>
-      <label>Trier par :</label>
+      
+      
       <select
+        className='categoriebutton'
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
       >
+     
         {categories.map((categorie) => (
           <option key={categorie.id} value={categorie.id}>
             {categorie.nom}
@@ -55,13 +62,14 @@ function Catalogue() {
         ))}
       </select>
 
-      <div>
+      <div className='catalogue'>
         {products.map((produit) => (
-          <div key={produit.id}>
+          <div className="product" key={produit.id}>
             <h3>{produit.nom}</h3>
             <p>Catégorie : {produit.categorie.nom}</p>
             <p>Description : {produit.description}</p>
-            <p>Prix : {produit.prixAvecPromotion ? produit.prixAvecPromotion.toFixed(2) : "N/A"} €</p>
+            <p  className={produit.prixAvecPromotion !== produit.prix ? 'prix-modifie' : ''}>
+              Prix : {produit.prixAvecPromotion ? produit.prixAvecPromotion.toFixed(2) : "N/A"} €</p>
 
             <img src={`/images/${produit.image}`} alt={produit.nom} />
           </div>

@@ -53,7 +53,7 @@ function CreateProduct() {
         },
       });
 
-      console.log('Le produit a été ajouté avec succès.');
+      console.log('Le produit a été ajouté.');
 
       setProduct({
         nom: '',

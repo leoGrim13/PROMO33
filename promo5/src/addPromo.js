@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 function AddPromo() {
-  // État local pour les valeurs du formulaire
   const [produitId, setProduitId] = useState('');
   const [produits, setProduits] = useState([]); 
-  const [pourcentage, setPourcentage] = useState(0); n
+  const [pourcentage, setPourcentage] = useState(0); 
   const [debutPromo, setDebutPromo] = useState(''); 
   const [finPromo, setFinPromo] = useState(''); 
 

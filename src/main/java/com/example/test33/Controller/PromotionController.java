@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
         public PromotionController(PromotionService promotionService, ProduitService produitService) {
             this.promotionService = promotionService;
             this.produitService = produitService;
+
         }
 
         @PostMapping("/create")
