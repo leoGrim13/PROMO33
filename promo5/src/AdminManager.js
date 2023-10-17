@@ -9,12 +9,11 @@ function AdminManager() {
   const [isCreateProductFormVisible, setCreateProductFormVisible] = useState(false);
   const [isAddPromoFormVisible, setAddPromoFormVisible] = useState(false)
 
-  // Vérifiez l'état d'authentification dans le stockage local
   const isAuthenticated = localStorage.getItem('isAuthenticated');
 
   if (isAuthenticated !== 'true') {
     alert('Connectez-vous avant !');
-    navigate('/admin'); // Redirigez l'utilisateur vers la page de connexion si non authentifié
+    navigate('/admin'); 
     return null;
   }
 
