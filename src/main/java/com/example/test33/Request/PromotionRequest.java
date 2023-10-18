@@ -6,7 +6,6 @@ public class PromotionRequest {
     private String finPromo;
     private double pourcentage;
 
-    // Getters et setters
     public Long getProduitId() {
         return produitId;
     }
