@@ -19,7 +19,7 @@ public class Promotion {
 
     @Temporal(TemporalType.DATE)
     private Date finpromo;
-
+    @Column(name = "pourcentage")
     private BigDecimal pourcentage;
 
     public Long getId() {

@@ -10,10 +10,16 @@ public class Produit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "image")
     private String image;
+
+    @Column(name = "nom")
     private String nom;
+
+    @Column(name = "prix")
     private double prix;
+
+    @Column(name = "description")
     private String description;
     @ManyToOne
     private Categorie categorie;
