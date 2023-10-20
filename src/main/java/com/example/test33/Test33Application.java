@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = "com.example.test33")
-@EntityScan("com.example.test33.model")
+@EntityScan("com.example.test33.Model")
 @EnableScheduling
 @EnableJpaRepositories(basePackages = "com.example.test33.Repository")
 public class Test33Application {
