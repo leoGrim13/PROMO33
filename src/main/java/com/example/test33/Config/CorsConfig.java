@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://promomercadona-b642578d6add.herokuapp.com/")
+                        .allowedOrigins("https://promomercadona-b642578d6add.herokuapp.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
