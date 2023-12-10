@@ -22,7 +22,7 @@ class AdminControllerTest {
     private MockMvc mockMvc;
 
     @Mock
-    private AdminService adminService; // Mock du service
+    private AdminService adminService;
 
     @BeforeEach
     void setUp() {
