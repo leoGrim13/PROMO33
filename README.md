@@ -1,2 +1,1 @@
-# PROMO33
-EXAMRENDU1
+Ce référentiel contient le code source du backend de l'application PromoWeb pour Mercadona. Il est développé en Java avec Spring Boot, utilisant PostgreSQL comme base de données. Ce backend gère l'enregistrement des promotions, la gestion des produits, et la logique métier associée.
